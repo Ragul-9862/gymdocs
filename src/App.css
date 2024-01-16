@@ -1,38 +1,274 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* <------------------------------------- Preloader ---------------------------------------> */
+.loader-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
 }
 
-@keyframes App-logo-spin {
-  from {
+.loader::before,
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  animation: prixClipFix 2s linear infinite;
+}
+
+.loader::after {
+  border-color: #ff3d00;
+  animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
+  inset: 6px;
+}
+
+@keyframes rotate {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
+
+/* <------------------------------- Navbar --------------------------------------------------------------> */
+
+.icon-main{
+  padding: 15px 15px;
+  color: #fff;
+  background-color: #ff1313;
+  transition: all 0.5s;
+  display: inline-block;
+  font-weight: 600;
+  text-transform: uppercase;
+  }
+  .icon-main:hover{
+    color: white;
+  }
+  .nav-link{
+    text-transform: uppercase;
+    color: white;
+  }
+  .nav-link.active{
+   font-weight: 700;
+   color: #ffc451;
+   border-bottom: 2px solid rgb(228, 148, 0);
+   display: inline-block;
+  }
+  .navbar-nav .nav-link.active{
+    color: #ffc451;
+  }
+ 
+  .navbar-brand{
+  font-size: 60px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 10px;
+  color: #ff1313;
+  }
+  .navbar-toggler:focus,
+  .navbar-toggler:active,
+  .navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  .navbar-toggler{
+    font-size: 45px;
+    color: #ff1313;
+  }
+  button.navbar-toggler{
+    border: none;
+    cursor: pointer;
+  }
+  .navbar-no-bg {
+    background-color: black !important; 
+    border: none; 
+  }
+
+  #hero {
+    width: 100%;
+    min-height: 100vh;
+    background: url("../src/Components/assets/h1_hero.png") top center;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    
+  }
+  
+  /* #hero:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  } */
+  
+  #hero .container {
+    position: relative;
+    padding-top: 15px;
+    /* text-align: center; */
+  }
+  .hero__caption h1{
+    color: #fff;
+    font-size: 70px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+  }
+  .hero__caption span{
+    color: #f04e3c;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    margin-left: 53px;
+  }
+  .hero__caption span::before {
+    content: " ";
+    border: 1px solid #f04e3c;;
+    color: white;
+    position: absolute;
+    height: 0px;
+    width: 52px;
+    top: 20px;
+    left: -55px;
+  }
+  .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .animated.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+  .icon-main-intro{
+    padding: 15px 15px;
+    color: #fff;
+    background-color: #ff1313;
+    transition: all 0.5s;
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 20px;
+    }
+  
+  .icon-toggle{
+    font-size: 45px;
+  }
+  .navbar-toggler:focus,
+  .navbar-toggler:active,
+  .navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 53%, 80%, to {
+      transform: translateZ(0);
+    }
+    40%, 43% {
+      transform: translate3d(0, -30px, 0);
+    }
+    70% {
+      transform: translate3d(0, -15px, 0);
+    }
+    90% {
+      transform: translate3d(0, -4px, 0);
+    }
+  }
+  
+  .icon-play {
+    color: #fff;
+    background-color: #ff1313;
+    border-radius: 50%;
+    width: 120px;
+    padding: 30px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    animation-name: pulse;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 #ff1313;
+    }
+    80% {
+      box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+    }
+  }
+  
+  .btn-whatsapp-pulse-border {
+    bottom: 120px;
+    right: 20px;
+    text-decoration: none;
+    color: white;
+    animation-play-state: paused;
+  }
+  
+  .btn-whatsapp-pulse-border::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    padding: 25px;
+    border: 5px solid #ff1313;
+    opacity: 0.75;
+    animation-name: pulse-border;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes pulse-border {
+    0% {
+      padding: 25px;
+      opacity: 0.75;
+    }
+    75% {
+      padding: 50px;
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  
